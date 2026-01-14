@@ -65,7 +65,7 @@ export function AddGoalModal({ onSubmit, onClose }: AddGoalModalProps) {
     <>
       {/* Modal backdrop */}
       <div
-        className="fixed inset-0 z-40 bg-black bg-opacity-50 flex items-center justify-center"
+        className="fixed inset-0 z-40 bg-black/25 bg-opacity-50 flex items-center justify-center"
         onClick={onClose}
         role="presentation"
       />
@@ -185,7 +185,7 @@ export function AddGoalModal({ onSubmit, onClose }: AddGoalModalProps) {
               disabled={isSubmitting}
               className="
                 flex-1 px-4 py-2 rounded-lg font-medium
-                bg-gradient-to-r from-pastel-pink to-pastel-peach text-white
+                bg-gradient-to-r from-pink-700 via-pink-500 to-pink-700 text-white
                 hover:shadow-lg transition-all
                 disabled:opacity-50 disabled:cursor-not-allowed
               "

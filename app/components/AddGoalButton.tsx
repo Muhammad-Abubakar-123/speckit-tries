@@ -21,13 +21,13 @@ export function AddGoalButton({ onClick, disabled = false }: AddGoalButtonProps)
         ${
           disabled
             ? 'bg-gray-400 cursor-not-allowed opacity-60'
-            : 'bg-gradient-to-r from-pastel-pink to-pastel-peach hover:shadow-lg hover:scale-105 active:scale-95'
+            : 'bg-gradient-to-r from-pink-700 via-pink-500 to-pink-700 hover:shadow-lg hover:scale-105 active:scale-95'
         }
       `}
       aria-label="Add a new goal"
       title={disabled ? 'Storage full or disabled' : 'Add a new goal'}
     >
-      <span className="text-xl">➕</span>
+      <span className="text-xl text-white">➕</span>
       <span>Add Goal</span>
     </button>
   );
