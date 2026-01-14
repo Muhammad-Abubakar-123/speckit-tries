@@ -1,7 +1,40 @@
 @import "tailwindcss";
 
+/* Modern light theme with pastel accents */
+:root {
+  color-scheme: light;
+}
 
 body {
-
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
 }
+
+/* Ensure contrast meets WCAG AA (4.5:1 for normal text) */
+@layer base {
+  a {
+    @apply text-gray-900 underline hover:text-gray-700;
+  }
+}
+
+/* Smooth scrolling for better UX */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling with pastel colors */
+::selection {
+  background-color: #ffc0d0;
+  color: #1a1a1a;
+}
+
+::-moz-selection {
+  background-color: #ffc0d0;
+  color: #1a1a1a;
+}
+
