@@ -30,12 +30,12 @@ description: "Implementation tasks for doit goal tracking app - initial page set
 
 **Purpose**: Project initialization and basic structure. Must be completed first. **Modern Light Theme Definition**: Light background (#F8F8F8 or white), dark text (#1A1A1A), pastel accents. Ensure WCAG AA contrast ratio minimum 4.5:1 for text readability.
 
-- [ ] T001 Install npm dependencies: Next.js 16.1.1, React 19.2.3, Tailwind 4, date-fns, shadcn/ui
-- [ ] T002 [P] Setup TypeScript strict mode in `tsconfig.json` (noImplicitAny, noUnusedLocals, noUnusedParameters)
-- [ ] T003 [P] Configure ESLint 9 in `eslint.config.mjs` with next/recommended config
-- [ ] T004 [P] Configure Tailwind CSS 4 in `tailwind.config.js` with pastel color palette (@theme). **HIGH FIX**: Define exact colors in @theme: pastel-pink #FFB3D9, pastel-mint #B3E5D9, pastel-lavender #D9B3FF, pastel-peach #FFD9B3 (urgency highlight), pastel-sky #B3D9FF
-- [ ] T005 [P] Setup shadcn/ui component library: run `npx shadcn-ui@latest init`
-- [ ] T006 [P] Create project directory structure: `app/components/`, `app/lib/`, `app/styles/`
+- [x] T001 Install npm dependencies: Next.js 16.1.1, React 19.2.3, Tailwind 4, date-fns, shadcn/ui
+- [x] T002 [P] Setup TypeScript strict mode in `tsconfig.json` (noImplicitAny, noUnusedLocals, noUnusedParameters)
+- [x] T003 [P] Configure ESLint 9 in `eslint.config.mjs` with next/recommended config
+- [x] T004 [P] Configure Tailwind CSS 4 in `tailwind.config.js` with pastel color palette (@theme). **HIGH FIX**: Define exact colors in @theme: pastel-pink #FFB3D9, pastel-mint #B3E5D9, pastel-lavender #D9B3FF, pastel-peach #FFD9B3 (urgency highlight), pastel-sky #B3D9FF
+- [x] T005 [P] Setup shadcn/ui component library: run `npx shadcn-ui@latest init`
+- [x] T006 [P] Create project directory structure: `app/components/`, `app/lib/`, `app/styles/`
 
 **Checkpoint**: Development environment ready. Next.js app starts with `npm run dev`. ESLint and TypeScript compile without errors.
 
@@ -47,11 +47,11 @@ description: "Implementation tasks for doit goal tracking app - initial page set
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T007 [P] Create TypeScript types/interfaces in `app/lib/types.ts`: Goal, User, GoalStatus enums
-- [ ] T008 [P] Implement localStorage utils in `app/lib/goals-storage.ts`: loadGoals(), saveGoals(), validateStorage()
-- [ ] T009 [P] Implement date utils in `app/lib/date-utils.ts`: calculateDaysRemaining(), formatDaysDisplay(), isUrgent(), validateEndDate()
-- [ ] T010 Create root layout component in `app/layout.tsx`: Tailwind globals, theme provider, viewport config
-- [ ] T011 Create home page in `app/page.tsx`: Basic structure, imports GoalsContainer
+- [x] T007 [P] Create TypeScript types/interfaces in `app/lib/types.ts`: Goal, User, GoalStatus enums
+- [x] T008 [P] Implement localStorage utils in `app/lib/goals-storage.ts`: loadGoals(), saveGoals(), validateStorage()
+- [x] T009 [P] Implement date utils in `app/lib/date-utils.ts`: calculateDaysRemaining(), formatDaysDisplay(), isUrgent(), validateEndDate()
+- [x] T010 Create root layout component in `app/layout.tsx`: Tailwind globals, theme provider, viewport config
+- [x] T011 Create home page in `app/page.tsx`: Basic structure, imports GoalsContainer
 
 **Checkpoint**: Foundation complete. Storage and date logic are tested and working. Root layout renders without errors. Ready for user story implementation.
 
@@ -65,12 +65,12 @@ description: "Implementation tasks for doit goal tracking app - initial page set
 
 ### Implementation for User Story 1
 
-- [ ] T012 [P] [US1] Create custom hooks in `app/lib/hooks.ts`: useGoals() hook returning [activeGoals, completedGoals]
-- [ ] T013 [P] [US1] Create DaysRemaining component in `app/components/DaysRemaining.tsx`: displays countdown with urgency highlighting
-- [ ] T014 [P] [US1] Create EmptyState component in `app/components/EmptyState.tsx`: message for empty columns with encouragement
-- [ ] T015 [US1] Create GoalCard component in `app/components/GoalCard.tsx`: displays goal title, checkbox, days remaining (depends on T013, T012)
-- [ ] T016 [US1] Create GoalColumn component in `app/components/GoalColumn.tsx`: renders goal array with title, handles layout (depends on T014, T015)
-- [ ] T017 [US1] Create GoalsContainer component in `app/components/GoalsContainer.tsx`: two-column layout manager, integrates useGoals() (depends on T016, T012)
+- [x] T012 [P] [US1] Create custom hooks in `app/lib/hooks.ts`: useGoals() hook returning [activeGoals, completedGoals]
+- [x] T013 [P] [US1] Create DaysRemaining component in `app/components/DaysRemaining.tsx`: displays countdown with urgency highlighting
+- [x] T014 [P] [US1] Create EmptyState component in `app/components/EmptyState.tsx`: message for empty columns with encouragement
+- [x] T015 [US1] Create GoalCard component in `app/components/GoalCard.tsx`: displays goal title, checkbox, days remaining (depends on T013, T012)
+- [x] T016 [US1] Create GoalColumn component in `app/components/GoalColumn.tsx`: renders goal array with title, handles layout (depends on T014, T015)
+- [x] T017 [US1] Create GoalsContainer component in `app/components/GoalsContainer.tsx`: two-column layout manager, integrates useGoals() (depends on T016, T012)
 - [ ] T018 [US1] Update `app/page.tsx` to render GoalsContainer component
 - [ ] T019 [US1] Test responsive layout at 320px, 768px, 1920px viewports in browser
 - [ ] T020 [US1] Verify goal countdown timers update correctly (manual: check DOM via DevTools)
@@ -88,8 +88,8 @@ description: "Implementation tasks for doit goal tracking app - initial page set
 
 ### Implementation for User Story 2
 
-- [ ] T022 [P] [US2] Create useGoalActions() hook in `app/lib/hooks.ts`: addGoal(), completeGoal(), deleteGoal() methods with error handling
-- [ ] T023 [P] [US2] Create GoalDropdown component in `app/components/GoalDropdown.tsx`: dropdown menu with "Mark Complete" and "Delete" options (uses shadcn Dialog or custom)
+- [x] T022 [P] [US2] Create useGoalActions() hook in `app/lib/hooks.ts`: addGoal(), completeGoal(), deleteGoal() methods with error handling
+- [x] T023 [P] [US2] Create GoalDropdown component in `app/components/GoalDropdown.tsx`: dropdown menu with "Mark Complete" and "Delete" options (uses shadcn Dialog or custom)
 - [ ] T024 [US2] Update GoalCard in `app/components/GoalCard.tsx`: add checkbox, wire to onSelect prop, show dropdown on checkbox (depends on T022, T023)
 - [ ] T025 [US2] Update GoalColumn in `app/components/GoalColumn.tsx`: wire onComplete and onDelete props, call useGoalActions() methods (depends on T022)
 - [ ] T026 [US2] Update GoalsContainer in `app/components/GoalsContainer.tsx`: integrate useGoalActions(), pass handlers to GoalColumn (depends on T022, T025)
@@ -129,9 +129,9 @@ description: "Implementation tasks for doit goal tracking app - initial page set
 
 ### Implementation for User Story 4
 
-- [ ] T036 [P] [US4] Create AddGoalModal component in `app/components/AddGoalModal.tsx`: form with title input, date input, Submit/Cancel buttons (uses shadcn Dialog)
-- [ ] T037 [P] [US4] Create AddGoalButton component in `app/components/AddGoalButton.tsx`: button that toggles modal visibility
-- [ ] T038 [US4] Update GoalsContainer in `app/components/GoalsContainer.tsx`: render AddGoalButton and AddGoalModal, wire onSubmit to useGoalActions().addGoal() (depends on T036, T037, T022)
+- [x] T036 [P] [US4] Create AddGoalModal component in `app/components/AddGoalModal.tsx`: form with title input, date input, Submit/Cancel buttons (uses shadcn Dialog)
+- [x] T037 [P] [US4] Create AddGoalButton component in `app/components/AddGoalButton.tsx`: button that toggles modal visibility
+- [x] T038 [US4] Update GoalsContainer in `app/components/GoalsContainer.tsx`: render AddGoalButton and AddGoalModal, wire onSubmit to useGoalActions().addGoal() (depends on T036, T037, T022)
 - [ ] T039 [US4] Add form validation in AddGoalModal: title required (1-500 chars), date required and must be future date (uses validateEndDate() from T009)
 - [ ] T040 [US4] Add error message display in AddGoalModal: show validation errors inline with clear messaging
 - [ ] T041 [US4] Test modal open/close: click Add Goal → modal opens, click Cancel → closes without creating
