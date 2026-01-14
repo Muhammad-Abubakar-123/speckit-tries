@@ -28,12 +28,12 @@ description: "Implementation tasks for doit goal tracking app - initial page set
 
 ## Phase 1: Setup (Shared Infrastructure)
 
-**Purpose**: Project initialization and basic structure. Must be completed first.
+**Purpose**: Project initialization and basic structure. Must be completed first. **Modern Light Theme Definition**: Light background (#F8F8F8 or white), dark text (#1A1A1A), pastel accents. Ensure WCAG AA contrast ratio minimum 4.5:1 for text readability.
 
 - [ ] T001 Install npm dependencies: Next.js 16.1.1, React 19.2.3, Tailwind 4, date-fns, shadcn/ui
 - [ ] T002 [P] Setup TypeScript strict mode in `tsconfig.json` (noImplicitAny, noUnusedLocals, noUnusedParameters)
 - [ ] T003 [P] Configure ESLint 9 in `eslint.config.mjs` with next/recommended config
-- [ ] T004 [P] Configure Tailwind CSS 4 in `tailwind.config.js` with pastel color palette (@theme)
+- [ ] T004 [P] Configure Tailwind CSS 4 in `tailwind.config.js` with pastel color palette (@theme). **HIGH FIX**: Define exact colors in @theme: pastel-pink #FFB3D9, pastel-mint #B3E5D9, pastel-lavender #D9B3FF, pastel-peach #FFD9B3 (urgency highlight), pastel-sky #B3D9FF
 - [ ] T005 [P] Setup shadcn/ui component library: run `npx shadcn-ui@latest init`
 - [ ] T006 [P] Create project directory structure: `app/components/`, `app/lib/`, `app/styles/`
 
@@ -115,8 +115,9 @@ description: "Implementation tasks for doit goal tracking app - initial page set
 - [ ] T033 [US3] Update Tailwind config with urgency color mapping if not already in T004
 - [ ] T034 [US3] Test urgency highlighting: create goals with various remaining days, verify correct highlighting
 - [ ] T035 [US3] Verify highlighting updates as time passes (manual: adjust browser time or check calculation logic)
+- [ ] T035.5 [US3] **CRITICAL FIX**: Update DaysRemaining component to display "Overdue" for days < 0. Update formatDaysDisplay() in `app/lib/date-utils.ts` to return "Overdue" when days < 0. Ensure overdue goals remain highlighted. Manual test: set goal end date to past date, verify "Overdue" displays instead of negative number.
 
-**Checkpoint**: User Story 3 complete. Goals with ≤3 days remaining are highlighted with urgency color. Styling is consistent and visually distinct.
+**Checkpoint**: User Story 3 complete. Goals with ≤3 days remaining are highlighted with urgency color. Goals with 0 or negative days display "Overdue" with continued highlighting. Styling is consistent and visually distinct.
 
 ---
 
@@ -136,7 +137,7 @@ description: "Implementation tasks for doit goal tracking app - initial page set
 - [ ] T041 [US4] Test modal open/close: click Add Goal → modal opens, click Cancel → closes without creating
 - [ ] T042 [US4] Test goal creation: fill form with valid title and future date → click Submit → goal appears in active column
 - [ ] T043 [US4] Test form validation: try past date → form prevents submission with error, try empty title → form prevents submission with error
-- [ ] T044 [US4] Test localStorage error handling: simulate quota exceeded → "Add Goal" button disabled with error message (FR-007)
+- [ ] T044 [US4] Test localStorage error handling: simulate quota exceeded → "Add Goal" button disabled with error message (FR-007). **HIGH FIX**: Exact message validation required: error MUST read exactly "Storage full or disabled. Clear browser data or delete goals to continue." (no variation). Steps: Fill localStorage with large test data via DevTools Storage tab, attempt to add goal, verify exact error message displays, verify button is disabled
 
 **Checkpoint**: User Story 4 complete. Users can create goals via modal form. Form validates title and end date. Goals immediately appear in active column. Feature set is MVP complete.
 

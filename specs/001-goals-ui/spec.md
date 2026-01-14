@@ -84,7 +84,7 @@ A user can click an "Add Goal" button to open a modal dialog containing a form w
 - What happens when a user has no active goals? System displays empty state message in the left column with encouragement to add a goal
 - What happens when a user has no completed goals? System displays empty state in the right column
 - How does the app handle goals that have passed their due date? Goals with negative days display "Overdue" instead of day count and remain highlighted
-- How does the system handle very long goal titles? Titles are truncated with ellipsis on small screens; full title visible on hover or in expanded view
+- How does the system handle very long goal titles? **Max title length: 500 characters**. Display truncation: 30 chars on mobile (320px), 50 chars on tablet (768px), full on desktop (1920px). Truncated titles show ellipsis (...). Full title visible on hover via native title attribute
 - What happens if localStorage is disabled or quota exceeded? Add Goal button is disabled and error message "Storage full or disabled. Clear browser data or delete goals to continue." is displayed. Users can still view and delete existing goals to free up space.
 
 ## Requirements *(mandatory)*
