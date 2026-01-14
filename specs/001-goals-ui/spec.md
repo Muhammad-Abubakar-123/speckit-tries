@@ -5,6 +5,14 @@
 **Status**: Draft  
 **Input**: User description: "Initial page setup- this application should be a goal tracking web app called 'doit'. There should be two columns - a left one where current goals are shown , along with how many days left the user has to achieve the goal, and a right one where completed goals are. Each goal can be 'checked' using a checkbox, and then either moved to the completed side coulum or permantly deleted. To add new goals, a user can click on a button to open a new goal form in a model (title and end date fields). Goals reaching their end date (within 3 days) are highlighted. Let's use a modern light there with fun pastel colours."
 
+## Clarifications
+
+### Session 2026-01-14
+
+- Q: How should deadline dates be interpreted across timezones? → A: User's local timezone (browser timezone) with midnight as the deadline
+- Q: What UX pattern for goal actions (complete/delete)? → A: Checkbox enables selection; dropdown menu appears with "Mark Complete" and "Delete" options
+- Q: How to handle localStorage disabled or quota exceeded? → A: Disable "Add Goal" button and show error message
+
 ## User Scenarios & Acceptance Criteria *(mandatory)*
 
 ### User Story 1 - View Active and Completed Goals (Priority: P1)
@@ -33,9 +41,9 @@ A user can interact with their goals using checkboxes. Checking a box allows the
 
 **Acceptance Scenarios**:
 
-1. **Given** an active goal with a checkbox, **When** the user clicks the checkbox, **Then** the goal is marked and a context menu or action appears
-2. **Given** a marked goal, **When** the user selects "Mark Complete", **Then** the goal moves to the completed column on the right
-3. **Given** a marked goal, **When** the user selects "Delete", **Then** the goal is permanently removed with no undo
+1. **Given** an active goal with a checkbox, **When** the user clicks the checkbox, **Then** the goal is visually marked/selected and a dropdown menu appears with "Mark Complete" and "Delete" options
+2. **Given** a marked goal with dropdown visible, **When** the user selects "Mark Complete" from the dropdown, **Then** the goal moves to the completed column on the right
+3. **Given** a marked goal with dropdown visible, **When** the user selects "Delete" from the dropdown, **Then** the goal is permanently removed with no undo
 
 ---
 
@@ -77,19 +85,19 @@ A user can click an "Add Goal" button to open a modal dialog containing a form w
 - What happens when a user has no completed goals? System displays empty state in the right column
 - How does the app handle goals that have passed their due date? Goals with negative days display "Overdue" instead of day count and remain highlighted
 - How does the system handle very long goal titles? Titles are truncated with ellipsis on small screens; full title visible on hover or in expanded view
-- What if a user tries to set an end date in the past? The form should prevent submission and show validation error
+- What happens if localStorage is disabled or quota exceeded? Add Goal button is disabled and error message "Storage full or disabled. Clear browser data or delete goals to continue." is displayed. Users can still view and delete existing goals to free up space.
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
 - **FR-001**: System MUST display goals in a two-column layout (active left, completed right) on page load
-- **FR-002**: System MUST calculate and display the number of days remaining for each active goal based on its end date
+- **FR-002**: System MUST calculate and display the number of days remaining for each active goal based on its end date. Days are calculated in the user's local timezone (browser timezone) with midnight as the deadline. A goal due on Jan 15 viewed on Jan 13 at 11pm shows "2 days remaining"
 - **FR-003**: System MUST highlight active goals with 3 or fewer days remaining using distinct pastel styling
-- **FR-004**: System MUST display goals with a checkbox to enable selection and interaction
+- **FR-004**: System MUST display goals with a checkbox to enable selection. When checkbox is clicked, the goal is marked as selected and a dropdown menu appears with "Mark Complete" and "Delete" actions
 - **FR-005**: System MUST allow users to move a checked goal from active to completed column
 - **FR-006**: System MUST allow users to permanently delete a checked goal
-- **FR-007**: System MUST persist goal data so it survives page refreshes (store in localStorage or backend)
+- **FR-007**: System MUST persist goal data in localStorage so it survives page refreshes. If localStorage is disabled or quota is exceeded, the "Add Goal" button MUST be disabled and an error message MUST be displayed: "Storage full or disabled. Clear browser data or delete goals to continue."
 - **FR-008**: System MUST display an "Add Goal" button that opens a modal form
 - **FR-009**: System MUST validate the modal form to require a non-empty title and a valid future date
 - **FR-010**: System MUST immediately add new goals to the active column after successful form submission
@@ -98,7 +106,7 @@ A user can click an "Add Goal" button to open a modal dialog containing a form w
 
 ### Key Entities
 
-- **Goal**: A user's objective to accomplish. Attributes: ID (unique identifier), title (string), endDate (ISO date), status (enum: active or completed), createdDate (timestamp). Relationships: belongs to user.
+- **Goal**: A user's objective to accomplish. Attributes: ID (unique identifier), title (string), endDate (ISO date stored as YYYY-MM-DD; interpreted as midnight in user's local timezone), status (enum: active or completed), createdDate (timestamp). Relationships: belongs to user.
 - **User**: The person using the app (assumed single user for MVP). Attributes: ID, preferences (theme, notification settings). Relationships: has many goals.
 
 ## Success Criteria *(mandatory)*
